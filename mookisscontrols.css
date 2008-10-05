@@ -1,0 +1,11 @@
+.scroller_container{	width: 380px;	height: 104px;	position:  absolute;	overflow: hidden;}	.scroller_innards{		width: 9999px;		position:  absolute;	}
+
+#test_tab_scroller .panel{
+	width: 380px;
+	float: left;
+}
+  	
+  	.selected{
+		background-color: #ff0000;
+}
+ 

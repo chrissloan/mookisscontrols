@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<script src="mootools-1.2.js" type="text/javascript" charset="utf-8"></script>
+  <script src="mookisscontrols.js" type="text/javascript" charset="utf-8"></script>
+  <link rel="stylesheet" href="mookisscontrols.css" type="text/css" charset="utf-8" />
+
+	<title>MooKissControls - HTML Examples</title>
+	
+</head>
+
+<body>
+
+<h2>Scroller</h2>
+  <div id="test_scroller">
+    <a href="javascript:void(0)" class="previous_button">previous</a>
+    <a href="javascript:void(0)" class="next_button">next</a>
+    <div class="scroller_container">
+      <div class="scroller_innards">
+        <a href="#"><img src="images/temp/video.jpg" width="130" height="98" alt="Video" class="thumb floatLeft" /></a>
+        <a href="#"><img src="images/temp/video3.jpg" width="130" height="98" alt="Video2" class="thumb floatLeft" /></a>
+        <a href="#"><img src="images/temp/video2.jpg" width="130" height="98" alt="Video2" class="thumb floatLeft" /></a>
+        <a href="#"><img src="images/temp/video4.jpg" width="130" height="98" alt="Video2" class="thumb floatLeft" /></a>
+      </div>
+    </div>
+    <br class="clear" />
+  </div>
+  <br/><br/><br/><br/><br/><br/><br/><br/>
+  <h2>Scroller with tabs</h2>
+    <div id="test_tab_scroller">
+      <ul class="tabs">
+        <li><a name="tab1" href="javascript:void(0)" class="selected">Item 1</a></li>
+        <li><a name="tab2" href="javascript:void(0)">Item 2</a></li>
+        <li><a name="tab3" href="javascript:void(0)">Item 3</a></li>
+        <li><a name="tab4" href="javascript:void(0)">Item 4</a></li>
+      </ul>
+      <a href="javascript:void(0)" class="previous_button">previous</a>
+      <a href="javascript:void(0)" class="next_button">next</a>
+      <div class="scroller_container">
+        <div class="scroller_innards">
+          <div class="panel">
+            This is item 1
+          </div>
+          <div class="panel">
+            This is item 2
+          </div>
+          <div class="panel">
+            This is item 3
+          </div>
+          <div class="panel">
+            This is item 4
+          </div>
+        </div>
+      </div>
+      <br class="clear" />
+    </div>
+
+  
+  <br/><br/><br/><br/><br/><br/><br/><br/>
+  <h2>Tabs</h2>
+  <div id="test_tabs">
+    <ul class="tabs">
+      <li><a name="tab1" href="javascript:void(0)" class="selected">Item 1</a></li>
+      <li><a name="tab2" href="javascript:void(0)">Item 2</a></li>
+      <li><a name="tab3" href="javascript:void(0)">Item 3</a></li>
+    </ul>
+    <div id="tab1" class="panel">
+    tab one thing
+    </div>
+    <div id="tab2" class="panel">
+    tab two thing
+    </div>
+    <div id="tab3" class="panel">
+    tab three thing
+    </div>
+  </div>
+<script type="text/javascript" charset="utf-8">
+window.addEvent('domready', function() {
+  new MooKissTabs('test_tabs');
+  new MooKissSlider('test_scroller', {itemsClass:'thumb', moveBy: 2});
+  new MooKissSlider('test_tab_scroller', {itemsClass:'panel', useTabs:true});
+});
+</script>
+</body>
+</html>

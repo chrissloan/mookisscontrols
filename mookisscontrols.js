@@ -109,6 +109,8 @@ var MooKissSlider = new Class({
 		itemsClass: 'box', //class name of items to scroll
 		controlNext: 'next_button', //class of next button
 		controlPrevious: 'previous_button', //class name of previous button
+		useTabs: false, //if tabs for sliding are used too
+		selectedClass: "selected", //class for tab that is selected
 		moveBy: 1
 	},
 	
@@ -146,6 +148,16 @@ var MooKissSlider = new Class({
 				}.bind(this)
 			);
 		}.bind(this));
+		
+		if(this.options.useTabs){ //for tab slider
+			this.tabs = $$('#' + this.elid + ' ul li a'); //store all the tabs into the hash
+			this.tabs.each(function(item, index) { //add the onclick functionality
+				item.addEvent('click', function(){
+						this.movePanel(index);
+					}.bind(this)
+				);
+			}.bind(this));
+		}
 	},
 	
 	clickNext: function(){ //conditionals galore
@@ -158,11 +170,17 @@ var MooKissSlider = new Class({
 		}else{
 			this.locationID = 0;
 			this.scroll.toElement(this.items[this.locationID]);
-			
 		}
+		
+		if(this.options.useTabs){ //for tab slider
+			this.tabs.removeClass(this.options.selectedClass);
+			this.tabs[this.locationID].addClass(this.options.selectedClass);
+		}
+		
 	},
 	
 	clickPrevious: function(){ //conditionals galore
+		
 		if(this.locationID != 0 && (this.locationID - this.options.moveBy) >= 0){
 			this.locationID -= this.options.moveBy;
 			this.scroll.toElement(this.items[this.locationID]);
@@ -174,6 +192,17 @@ var MooKissSlider = new Class({
 			this.scroll.toElement(this.items[this.locationID]);
 			
 		}
+		if(this.options.useTabs){ //for tab slider
+			this.tabs.removeClass(this.options.selectedClass);
+			this.tabs[this.locationID].addClass(this.options.selectedClass);
+		}
+	},
+	
+	movePanel: function(index){ //for use with moving by tabs
+		this.tabs.removeClass(this.options.selectedClass); //remove the selected class to all tabs
+		this.tabs[index].addClass(this.options.selectedClass);	//add the selected class to selected tab
+		this.scroll.toElement(this.items[index]); //scroll to the item
+		this.locationID = index; //set the new locationID to the index of item
 	}
 	
 });
